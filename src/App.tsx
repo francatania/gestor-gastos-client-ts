@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './index.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import API_BASE_URL  from './api/config.ts';
 import './App.css'
+import Login from './components/Login.tsx'
 // import { Home } from './components/Home.jsx'
 // import { Login } from './components/Login.jsx'
 // import { Register } from './components/Register.jsx';
@@ -40,7 +41,16 @@ const App: React.FC = () => {
           </BrowserRouter>
 
     </SelectedAccountContext.Provider> */}
-    <h1>{API_BASE_URL}</h1>
+
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Navigate to="/login" />} />
+              <Route path="" element={<Navigate to="/login" />} />
+              <Route path='/login' element={<Login/>}></Route>
+
+            </Routes>
+          </BrowserRouter>
+
     </>
   )
 }
